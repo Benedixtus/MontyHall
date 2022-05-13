@@ -1,0 +1,29 @@
+body {
+    background-color: black;
+}
+#numbers{
+    height: 40vw;
+    width: 40vw;
+}
+#columns {
+    height: 40vw;
+    width: 40vw;
+    background-color:aqua ;
+    display: inline-flex;
+    padding: 0 10%;
+    transform: rotateZ(180deg);
+}
+#column1 {
+    height: 0%;
+    width: 30%;
+    background-color: red;
+}
+#column2 {
+    height: 0%;
+    width: 30%;
+    background-color: blue;
+}
+p {
+    color: white;
+    font-size: 250%;
+}

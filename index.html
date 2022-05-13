@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="numbers">
+        <p id="probability">probability</p>
+        <button onclick="monty()">hahaha</button>
+    </div>
+    <div id="columns">
+        
+        <div id="column2"></div>
+        <div id="column1"></div>
+    </div>
+    <script>
+            var iterations = 0;
+            var stay = 0;
+            var stayper = 0;
+            var change = 0;
+            var changeper = 0;
+        function monty() {
+            for( var i = 0; i < 1000000; i++) {
+                setTimeout(function () {
+                var godor = Math.floor(Math.random()*3) + 1;
+                var pick = Math.floor(Math.random()*3) + 1;
+                // if you don't switch
+                if( godor == pick ) {
+                    stay ++;
+                }
+                else {
+                    change++;
+                } 
+                iterations++;
+                stayper = (stay/(iterations+1)) * 100;
+                changeper = (change/(iterations+1)) * 100;
+                document.getElementById("probability").innerHTML = stayper + " " + changeper + " " + iterations;
+                document.getElementById("column1").style.height = stayper + "%";
+                document.getElementById("column2").style.height = changeper + "%";
+                }
+            , 0);
+        }
+        }
+    </script>
+</body>
+</html>
