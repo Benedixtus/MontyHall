@@ -1,21 +1,30 @@
 body {
     background-color: black;
+    display: inline-block;
 }
+
 #numbers{
-    height: 40vw;
-    width: 40vw;
+    height: 50vw;
+    width: 30vw;
+    
+    display: inline-block;
 }
 #columns {
-    height: 40vw;
+    height: 90vh;
     width: 40vw;
     background-color:aqua ;
     display: inline-flex;
     padding: 0 10%;
     transform: rotateZ(180deg);
+    position: absolute;
+    right: 0;
+}
+#probability {
+    height: 30vh;
 }
 #column1 {
-    height: 0%;
-    width: 30%;
+    height: 90vh;
+    width: 40vw;
     background-color: red;
 }
 #column2 {

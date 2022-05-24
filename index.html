@@ -10,7 +10,10 @@
 <body>
     <div id="numbers">
         <p id="probability">probability</p>
-        <button onclick="monty()">hahaha</button>
+        <button onclick="monty()">single</button>
+        <button onclick="hundred(1000)">hundred</button>
+        <button onclick="deleteLocatStorage()">reset</button>
+
     </div>
     <div id="columns">
         
@@ -18,33 +21,74 @@
         <div id="column1"></div>
     </div>
     <script>
-            var iterations = 0;
-            var stay = 0;
-            var stayper = 0;
-            var change = 0;
-            var changeper = 0;
+
+        
+        function hundred(ertek) {
+            for( var i = 0; i < ertek; i++) {
+                monty();
+            }
+        }
+
         function monty() {
+            if(localStorage.getItem('iterations') > 0){
+                var iterations = localStorage.getItem('iterations');
+                var stay = localStorage.getItem('stay');
+                var stayper = 0;
+                var change = localStorage.getItem('change');
+                var changeper = 0;
+
+            }
+            else {
+                    var iterations = 0;
+                    var stay = 0;
+                    var stayper = 0;
+                    var change = 0;
+                    var changeper = 0;
+            }
             for( var i = 0; i < 1000000; i++) {
-                setTimeout(function () {
-                var godor = Math.floor(Math.random()*3) + 1;
-                var pick = Math.floor(Math.random()*3) + 1;
-                // if you don't switch
-                if( godor == pick ) {
-                    stay ++;
-                }
-                else {
-                    change++;
-                } 
-                iterations++;
-                stayper = (stay/(iterations+1)) * 100;
-                changeper = (change/(iterations+1)) * 100;
-                document.getElementById("probability").innerHTML = stayper + " " + changeper + " " + iterations;
-                document.getElementById("column1").style.height = stayper + "%";
-                document.getElementById("column2").style.height = changeper + "%";
-                }
-            , 0);
+                        if( Math.floor(Math.random()*3) + 1 == Math.floor(Math.random()*3) + 1 ) {
+                            stay ++;
+                        }
+                        else {
+                            change++;
+                        } 
+                        iterations++;
+                        }
+                        stayper = (stay/(iterations) * 100);
+                        changeper = (change/(iterations) * 100);
+                        document.getElementById("probability").innerHTML = stayper + " " + changeper + " " + iterations;
+                        document.getElementById("column1").style.height = stayper + "%";
+                        document.getElementById("column2").style.height = changeper + "%";
+                        localStorage.setItem('stay', stay);
+                        localStorage.setItem('change', change);
+                        localStorage.setItem('iterations', iterations);
+
+
         }
+        function deleteLocatStorage() {
+            if(localStorage.getItem('iterations') > 0){
+                var iterations = localStorage.getItem('iterations');
+                var stay = localStorage.getItem('stay');
+                var stayper = 0;
+                var change = localStorage.getItem('change');
+                var changeper = 0;
+
+            }
+            else {
+                    var iterations = 0;
+                    var stay = 0;
+                    var stayper = 0;
+                    var change = 0;
+                    var changeper = 0;
+            }
+            localStorage.setItem('stay', 0);
+            localStorage.setItem('change', 0);
+            localStorage.setItem('iterations', 0);
+            document.getElementById("probability").innerHTML = stayper + " " + changeper + " " + iterations;
+            document.getElementById("column1").style.height = stayper + "%";
+            document.getElementById("column2").style.height = changeper + "%";
         }
+        
     </script>
 </body>
 </html>
